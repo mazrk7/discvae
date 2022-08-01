@@ -124,7 +124,7 @@ def generate_moving_mnist(shape=(64, 64), seq_len=30, seqs=10000, digit_sz=28, n
 
         # Get randomly sampled images and there corresponding labels from MNIST dataset
         rand_indexes = np.random.randint(0, num_examples, size=num_digits)
-        mnist_images = [Image.fromarray(get_picture_array(mnist_data, r)).resize((digit_sz, digit_sz), Image.ANTIALIAS) \
+        mnist_images = [Image.fromarray(get_picture_array(mnist_data, r)).resize((digit_sz, digit_sz), Image.Resampling.LANCZOS) \
                         for r in rand_indexes]
         mnist_labels = [mnist_y[r] for r in rand_indexes]
         lab_dist[mnist_labels[0]] += 1
